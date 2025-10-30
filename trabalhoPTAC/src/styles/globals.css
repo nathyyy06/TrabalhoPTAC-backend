@@ -14,8 +14,6 @@
   margin: 0;
 }
 
-
-
 .cadastrar-mesa-container {
   max-width: 400px;
   margin: 40px auto;
@@ -98,7 +96,6 @@ button {
   background-color: #c82333;
 }
 
-
 .reserva-mesa-container {
   max-width: 400px;
   margin: 40px auto;
@@ -159,7 +156,6 @@ button {
 .btn-confirmar:hover {
   background-color: #218838;
 }
-
 
 .consultar-mesa-container {
   max-width: 400px;
@@ -233,4 +229,77 @@ button {
 
 .btn-limpar:hover {
   background-color: #5a6268;
+}
+
+/* ======== ESTILOS DO LISTAR RESERVAS ======== */
+
+.listar-reservas-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.listar-reservas-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tabela-reservas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-reservas th,
+.tabela-reservas td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.tabela-reservas th {
+  background-color: #f1f1f1;
+  font-weight: 600;
+  color: #333;
+}
+
+.acoes button {
+  margin: 0 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-cancelar {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-cancelar:hover {
+  background-color: #c82333;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn-editar:hover {
+  background-color: #e0a800;
+}
+
+.btn-detalhes {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-detalhes:hover {
+  background-color: #0069d9;
 }
