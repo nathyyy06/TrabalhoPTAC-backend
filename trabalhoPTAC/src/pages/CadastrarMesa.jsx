@@ -3,7 +3,9 @@ import '../styles/globals.css';
 
 const CadastrarMesa = () => {
   return (
+ 
     <div className="cadastrar-mesa-container">
+          <Footer />
       <h2>Cadastrar Mesas</h2>
 
       <form className="form-mesa">

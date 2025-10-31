@@ -1,4 +1,3 @@
-
 import '../styles/globals.css';
 
 const ReservaMesa = () => {
@@ -19,12 +18,12 @@ const ReservaMesa = () => {
 
         <div className="form-group">
           <label htmlFor="nomeCliente">Nome do Cliente</label>
-          <input type="text" id="nomeCliente" placeholder="Ex: João Silva" />
+          <input type="text" id="nomeCliente" placeholder="Ex: Luiz Magaroto" />
         </div>
 
         <div className="form-group">
           <label htmlFor="contatoCliente">Contato</label>
-          <input type="tel" id="contatoCliente" placeholder="Ex: (11) 99999-9999" />
+          <input type="tel" id="contatoCliente" placeholder="Ex: (67) 99999-9999" />
         </div>
 
         <div className="form-group">

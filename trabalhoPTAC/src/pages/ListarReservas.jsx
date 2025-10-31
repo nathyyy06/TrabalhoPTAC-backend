@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/globals.css';
 
 const ListarReservas = () => {
@@ -69,12 +68,7 @@ const ListarReservas = () => {
                 >
                   Editar
                 </button>
-                <button
-                  className="btn-detalhes"
-                  onClick={() => handleVerDetalhes(reserva.id)}
-                >
-                  Ver Detalhes
-                </button>
+                <button className="btn-detalhes" onClick={() => handleVerDetalhes(reserva.id)}> Ver Detalhes </button>
               </td>
             </tr>
           ))}
