@@ -4,7 +4,7 @@ import '../styles/globals.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} Meu Site. Todos os direitos reservados.</p>
+      <p>© {new Date().getFullYear()} Casa do Sabor. Todos os direitos reservados.</p>
     </footer>
   );
 };

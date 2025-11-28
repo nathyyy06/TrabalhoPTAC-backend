@@ -20,7 +20,7 @@ function Login() {
           <button type="button" className="btn-login"> Entrar </button>
         </form>
 
-        <p className="register-link"> Ainda não tem uma conta? <a href="#">Cadastre-se</a></p>
+        <p className="register-link"> Ainda não tem uma conta? <a href="/auth/cadastro">Cadastre-se</a></p>
       </div>
     </div>
   );

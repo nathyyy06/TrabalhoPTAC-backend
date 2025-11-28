@@ -35,7 +35,7 @@ function Cadastro() {
           <button type="button" className="btn-cadastro"> Cadastrar </button>
         </form>
 
-        <p className="login-link"> Já tem uma conta? <a href="#">Faça login</a></p>
+        <p className="login-link"> Já tem uma conta? <a href="/auth/login">Faça login</a></p>
       </div>
     </div>
   );

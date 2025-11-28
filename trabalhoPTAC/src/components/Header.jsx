@@ -4,9 +4,8 @@ function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo ou nome do sistema */}
         <div className="logo">
-          <h2>🍽️ MyRestaurant</h2>
+          <h2>Casa do Sabor</h2>
         </div>
 
         <nav className="nav">

@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')).render(
             <Route path="/auth/cadastro" element={<Cadastro/>}/>
             <Route path="/perfil" element={<Perfil/>}/>
             <Route path="/atualizarperfil" element={<AtualizarPerfil/>}/>
-            <Route path="/cadastrarmesa" element={<CadastrarMesa/>}/>
+            <Route path="/cadastrar" element={<CadastrarMesa/>}/>
             <Route path="/reserva" element={<ReservaMesa/>}/>
             <Route path="/consultar" element={<ConsultarMesa/>}/>
             <Route path="/listar" element={<ListarReservas/>}/>
