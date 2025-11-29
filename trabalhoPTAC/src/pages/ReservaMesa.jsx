@@ -1,47 +1,69 @@
-import '../styles/globals.css';
+import { useState } from "react";
+import { adicionar } from "../utils/storage";
+import "../styles/globals.css";
 
-const ReservaMesa = () => {
+export default function ReservaMesa() {
+  const [form, setForm] = useState({
+    data: "",
+    horario: "",
+    cliente: "",
+    contato: "",
+    mesa: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
+
+  const reservar = () => {
+    const reserva = {
+      id: Date.now(),
+      codigo: "R-" + Math.floor(Math.random() * 9999),
+      data: form.data,
+      horario: form.horario,
+      cliente: form.cliente,
+      contato: form.contato,
+      mesa: form.mesa,
+    };
+
+    adicionar("reservas", reserva);
+    alert("Reserva criada!");
+  };
+
   return (
     <div className="reserva-mesa-container">
       <h2>Reservar Mesa</h2>
 
       <form className="form-reserva">
         <div className="form-group">
-          <label htmlFor="dataReserva">Data da Reserva</label>
-          <input type="date" id="dataReserva" />
+          <label>Data</label>
+          <input id="data" type="date" onChange={handleChange} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="horarioReserva">Horário</label>
-          <input type="time" id="horarioReserva" />
+          <label>Horário</label>
+          <input id="horario" type="time" onChange={handleChange} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="nomeCliente">Nome do Cliente</label>
-          <input type="text" id="nomeCliente" placeholder="Ex: Luiz Magaroto" />
+          <label>Cliente</label>
+          <input id="cliente" onChange={handleChange} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="contatoCliente">Contato</label>
-          <input type="tel" id="contatoCliente" placeholder="Ex: (67) 99999-9999" />
+          <label>Contato</label>
+          <input id="contato" onChange={handleChange} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="mesaReserva">Mesa</label>
-          <select id="mesaReserva">
-            <option value="">Selecione uma mesa</option>
-            <option value="mesa1">Mesa 1</option>
-            <option value="mesa2">Mesa 2</option>
-            <option value="mesa3">Mesa 3</option>
-          </select>
+          <label>Mesa</label>
+          <input id="mesa" placeholder="Ex: 01" onChange={handleChange} />
         </div>
 
-        <div className="botoes">
-          <button type="button" className="btn-confirmar">Confirmar Reserva</button>
-        </div>
+        <button type="button" className="btn-confirmar" onClick={reservar}>
+          Confirmar
+        </button>
       </form>
     </div>
   );
-};
-
-export default ReservaMesa;
+}

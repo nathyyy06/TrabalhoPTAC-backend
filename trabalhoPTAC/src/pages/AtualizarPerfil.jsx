@@ -1,55 +1,52 @@
+import { useState, useEffect } from "react";
+import { salvar, carregar } from "../utils/storage";
 import "../styles/globals.css";
 
-function AlterarPerfil() {
+export default function AtualizarPerfil() {
+  const [perfil, setPerfil] = useState({
+    nome: "",
+    email: "",
+    telefone: "",
+  });
+
+  useEffect(() => {
+    const dados = carregar("perfil", {});
+    setPerfil(dados);
+  }, []);
+
+  const handleChange = (e) => {
+    setPerfil({ ...perfil, [e.target.id]: e.target.value });
+  };
+
+  const salvarPerfil = () => {
+    salvar("perfil", perfil);
+    alert("Perfil atualizado!");
+  };
+
   return (
     <div className="alterar-perfil-container">
-
       <h1 className="title">Alterar Perfil</h1>
-
-      <div className="perfil-foto-container">
-        <img 
-          src="../images/fotodeperfil.jpg" 
-          alt="Foto de perfil" 
-          className="perfil-foto"
-        />
-        <button type="button" className="btn btn-editar">
-          Alterar Foto
-        </button>
-      </div>
 
       <form className="form">
         <div className="form-group">
-          <label htmlFor="nome">Nome Completo:</label>
-          <input type="text" id="nome" placeholder="Digite seu nome completo" />
+          <label>Nome:</label>
+          <input id="nome" value={perfil.nome} onChange={handleChange} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">E-mail:</label>
-          <input type="email" id="email" placeholder="Digite seu e-mail" />
+          <label>Email:</label>
+          <input id="email" value={perfil.email} onChange={handleChange} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="telefone">Telefone:</label>
-          <input type="tel" id="telefone" placeholder="(00) 00000-0000" />
+          <label>Telefone:</label>
+          <input id="telefone" value={perfil.telefone} onChange={handleChange} />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="senha">Nova Senha:</label>
-          <input type="password" id="senha" placeholder="Digite uma nova senha" />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="confirmarSenha">Confirmar Senha:</label>
-          <input type="password" id="confirmarSenha" placeholder="Confirme sua nova senha" />
-        </div>
-
-        <div className="btn-group">
-          <button type="button" className="btn btn-salvar">Salvar Alterações</button>
-          <button type="button" className="btn btn-cancelar">Cancelar</button>
-        </div>
+        <button type="button" className="btn-salvar" onClick={salvarPerfil}>
+          Salvar
+        </button>
       </form>
     </div>
   );
 }
-
-export default AlterarPerfil;
