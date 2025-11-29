@@ -112,6 +112,22 @@ body {
   margin: 20px auto;
 }
 
+.cadastrar-mesa-container,
+.consultar-mesa-container {
+  width: 420px;
+  margin: 20px auto;
+  overflow: hidden;        /* impede conteúdo de sair da caixa */
+  display: flex;
+  flex-direction: column;  /* garante que tudo fique dentro */
+  align-items: center;     /* centraliza os .box dentro */
+}
+
+.box {
+  width: 95%;         /* agora cabe dentro certinho */
+  margin: 15px 0;      /* remove margin auto */
+}
+
+
 /* ========= TÍTULOS ========= */
 h2,
 .login-title,
@@ -259,8 +275,68 @@ button,
   background: #fff0f7;
 }
 
+
+
+/* ====== CARDÁPIO ====== */
+.cardapio-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+.cardapio-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.item-cardapio {
+  width: 230px; 
+  background: #fff6fc;
+  border: 2px solid #ffb6d9;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 10px rgba(255, 170, 200, 0.3);
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.item-cardapio:hover {
+  transform: scale(1.06);
+  background: #ffe3f4;
+}
+
+.item-cardapio img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #ffb6d9;
+  margin-bottom: 10px;
+}
+
+.item-cardapio h3 {
+  color: #b03070;
+  font-size: 20px;
+  margin: 8px 0 5px;
+}
+
+.item-cardapio p {
+  color: #7a2c57;
+  font-weight: bold;
+  font-size: 17px;
+  margin: 0;
+}
+
+
+
+
 /* ========= RESPONSIVIDADE ========= */
 @media (max-width: 480px) {
+
+  /* caixas gerais */
   .box,
   .alterar-perfil-container,
   .perfil-box,
@@ -273,6 +349,7 @@ button,
     width: 95%;
   }
 
+  /* cards da HOME */
   .cards-container {
     flex-direction: column;
     align-items: center;
@@ -281,4 +358,22 @@ button,
   .card {
     width: 85%;
   }
+
+  /* ====== RESPONSIVIDADE DO CARDÁPIO ====== */
+
+  .cardapio-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .item-cardapio {
+    width: 85%;     /* deixa o card menor no celular */
+    max-width: 320px;
+  }
+
+  .item-cardapio img {
+    height: 160px;  /* ajusta a imagem para tela pequena */
+  }
 }
+
