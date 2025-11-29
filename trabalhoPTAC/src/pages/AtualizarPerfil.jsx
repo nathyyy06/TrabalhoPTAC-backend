@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { salvar, carregar } from "../utils/storage";
 import "../styles/globals.css";
 
@@ -10,7 +12,7 @@ export default function AtualizarPerfil() {
   });
 
   useEffect(() => {
-    const dados = carregar("perfil", {});
+    const dados = carregar("perfil", { nome: "", email: "", telefone: "" });
     setPerfil(dados);
   }, []);
 
@@ -20,33 +22,39 @@ export default function AtualizarPerfil() {
 
   const salvarPerfil = () => {
     salvar("perfil", perfil);
-    alert("Perfil atualizado!");
+    alert("Perfil atualizado com sucesso!");
   };
 
   return (
-    <div className="alterar-perfil-container">
-      <h1 className="title">Alterar Perfil</h1>
+    <div>
+      <Header />
 
-      <form className="form">
-        <div className="form-group">
-          <label>Nome:</label>
-          <input id="nome" value={perfil.nome} onChange={handleChange} />
-        </div>
+      <div className="alterar-perfil-container">
+        <h1 className="title">Alterar Perfil</h1>
 
-        <div className="form-group">
-          <label>Email:</label>
-          <input id="email" value={perfil.email} onChange={handleChange} />
-        </div>
+        <form className="form">
+          <div className="form-group">
+            <label>Nome:</label>
+            <input id="nome" value={perfil.nome} onChange={handleChange} />
+          </div>
 
-        <div className="form-group">
-          <label>Telefone:</label>
-          <input id="telefone" value={perfil.telefone} onChange={handleChange} />
-        </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input id="email" value={perfil.email} onChange={handleChange} />
+          </div>
 
-        <button type="button" className="btn-salvar" onClick={salvarPerfil}>
-          Salvar
-        </button>
-      </form>
+          <div className="form-group">
+            <label>Telefone:</label>
+            <input id="telefone" value={perfil.telefone} onChange={handleChange} />
+          </div>
+
+          <button type="button" className="btn-salvar" onClick={salvarPerfil}>
+            Salvar Alterações
+          </button>
+        </form>
+      </div>
+
+      <Footer />
     </div>
   );
 }

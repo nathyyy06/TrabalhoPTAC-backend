@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { adicionar } from "../utils/storage";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "../styles/globals.css";
 
 export default function ReservaMesa() {
@@ -9,6 +11,7 @@ export default function ReservaMesa() {
     cliente: "",
     contato: "",
     mesa: "",
+    pessoas: "",
   });
 
   const handleChange = (e) => {
@@ -19,51 +22,60 @@ export default function ReservaMesa() {
     const reserva = {
       id: Date.now(),
       codigo: "R-" + Math.floor(Math.random() * 9999),
-      data: form.data,
-      horario: form.horario,
-      cliente: form.cliente,
-      contato: form.contato,
-      mesa: form.mesa,
+      ...form,
     };
 
     adicionar("reservas", reserva);
-    alert("Reserva criada!");
+    alert("Reserva criada com sucesso!");
   };
 
   return (
-    <div className="reserva-mesa-container">
-      <h2>Reservar Mesa</h2>
+    <div>
+      <Header />
 
-      <form className="form-reserva">
-        <div className="form-group">
-          <label>Data</label>
-          <input id="data" type="date" onChange={handleChange} />
+      <div className="reserva-mesa-container">
+        <h2>Reservar Mesa</h2>
+
+        <div className="form-reserva">
+
+          <div className="form-group">
+            <label>Data</label>
+            <input id="data" type="date" onChange={handleChange} />
+          </div>
+
+          <div className="form-group">
+            <label>Horário</label>
+            <input id="horario" type="time" onChange={handleChange} />
+          </div>
+
+          <div className="form-group">
+            <label>Cliente</label>
+            <input id="cliente" onChange={handleChange} />
+          </div>
+
+          <div className="form-group">
+            <label>Contato</label>
+            <input id="contato" onChange={handleChange} />
+          </div>
+
+          <div className="form-group">
+            <label>Mesa</label>
+            <input id="mesa" onChange={handleChange} placeholder="Ex: 05" />
+          </div>
+
+          <div className="form-group">
+            <label>Quantidade de Pessoas</label>
+            <input id="pessoas" type="number" min="1" onChange={handleChange} />
+          </div>
+
+          <button className="btn-confirmar" onClick={reservar}>
+            Confirmar Reserva
+          </button>
+
         </div>
+      </div>
 
-        <div className="form-group">
-          <label>Horário</label>
-          <input id="horario" type="time" onChange={handleChange} />
-        </div>
-
-        <div className="form-group">
-          <label>Cliente</label>
-          <input id="cliente" onChange={handleChange} />
-        </div>
-
-        <div className="form-group">
-          <label>Contato</label>
-          <input id="contato" onChange={handleChange} />
-        </div>
-
-        <div className="form-group">
-          <label>Mesa</label>
-          <input id="mesa" placeholder="Ex: 01" onChange={handleChange} />
-        </div>
-
-        <button type="button" className="btn-confirmar" onClick={reservar}>
-          Confirmar
-        </button>
-      </form>
+      <Footer />
     </div>
   );
 }

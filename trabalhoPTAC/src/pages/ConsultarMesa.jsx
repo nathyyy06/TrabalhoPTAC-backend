@@ -1,37 +1,30 @@
 import '../styles/globals.css';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { carregar } from "../utils/storage";
 
-const ConsultarMesa = () => {
+export default function ConsultarMesa() {
+  const mesas = carregar("mesas", []);
+
   return (
-    <div className="consultar-mesa-container">
-      <h2>Consultar Mesas</h2>
+    <div>
+      <Header />
 
-      <form className="form-consulta">
-        <div className="form-group">
-          <label htmlFor="numeroMesa">Nº da Mesa</label>
-          <input type="text" id="numeroMesa" placeholder="Ex: 01" />
-        </div>
+      <div className="consultar-mesa-container">
+        <h2>Consultar Mesas</h2>
 
-        <div className="form-group">
-          <label htmlFor="statusMesa">Status da Mesa</label>
-          <select id="statusMesa">
-            <option value="">Selecione</option>
-            <option value="disponivel">Disponível</option>
-            <option value="ocupada">Ocupada</option>
-          </select>
-        </div>
+        {mesas.length === 0 && <p>Nenhuma mesa cadastrada ainda.</p>}
 
-        <div className="form-group">
-          <label htmlFor="capacidadeMesa">Capacidade</label>
-          <input type="number" id="capacidadeMesa" placeholder="Ex: 4" />
-        </div>
+        {mesas.map((m) => (
+          <div key={m.id} className="box">
+            <p><strong>Mesa:</strong> {m.numero}</p>
+            <p><strong>Capacidade:</strong> {m.capacidade}</p>
+            <p><strong>Status:</strong> {m.status}</p>
+          </div>
+        ))}
+      </div>
 
-        <div className="botoes">
-          <button type="button" className="btn-consultar">Consultar</button>
-          <button type="button" className="btn-limpar">Limpar</button>
-        </div>
-      </form>
+      <Footer />
     </div>
   );
-};
-
-export default ConsultarMesa;
+}

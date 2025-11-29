@@ -1,12 +1,9 @@
-import React from 'react';
-import '../styles/globals.css';
+import "../styles/globals.css";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} Casa do Sabor. Todos os direitos reservados.</p>
+      <p>© 2025 SweetReserve — Sistema de Reservas</p>
     </footer>
   );
-};
-
-export default Footer;
+}
